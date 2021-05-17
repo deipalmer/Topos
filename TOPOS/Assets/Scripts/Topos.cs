@@ -16,12 +16,6 @@ public class Topos : MonoBehaviour
         transform.localPosition = altura;
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         transform.localPosition = Vector3.Lerp(transform.localPosition, altura, velocidad * Time.deltaTime);
