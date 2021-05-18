@@ -9,6 +9,7 @@ public class Topos : MonoBehaviour
     Vector3 altura;
     float velocidad = 3f;
     public float tiempoVisible;
+    public int puntos = 0;
 
     void Awake()
     {
