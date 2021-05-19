@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject topo;
     Topos[] topos;
     public float salir;
+    public TextMeshProUGUI puntosText;
+    public int puntuacion;
 
     void Start()
     {
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
         }
 
         cronoText.text = Tiempo(tiempo);
+        puntosText.text = MostrarPuntos(puntuacion);
     }
 
     float NumAleatorio(float num)
@@ -42,13 +46,22 @@ public class GameManager : MonoBehaviour
     {
         int minutos = (int)tiempo / 60;
         int segundos = (int)tiempo % 60;
-        int miliSegundos = (int)tiempo % 3600;
 
-        return minutos.ToString("00") + (" : ") + segundos.ToString("00") + (" : ");
+        return minutos.ToString("00") + (" : ") + segundos.ToString("00");
     }
 
     public void Cerrar()
     {
         Application.Quit();
+    }
+
+    public void AddPoints()
+    {
+        puntuacion += 10;
+    }
+
+    public string MostrarPuntos(int puntuacion)
+    {
+        return puntuacion.ToString("0000");
     }
 }
