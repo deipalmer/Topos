@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         NumAleatorio(salir);
         if (tiempo <= 60)
         {
-            if (salir > 95f)
+            if (salir > 97f)
             {
                 topos[Random.Range(0, topos.Length)].TopoVisible();
             }
