@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject manager;
     public TextMeshProUGUI cronoText;
     public float tiempo;
     public GameObject topo;
@@ -63,5 +64,14 @@ public class GameManager : MonoBehaviour
     public string MostrarPuntos(int puntuacion)
     {
         return puntuacion.ToString("0000");
+    }
+
+    public void VueltaMenu()
+    {
+        manager.SetActive(true);
+        puntuacion = 0;
+        salir = 0;
+        tiempo = 0;
+        manager.SetActive(false);
     }
 }
