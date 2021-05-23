@@ -6,9 +6,11 @@ public class Topos : MonoBehaviour
 {
     public float posOculto;
     public float posVisible;
+    public int puntos;
     Vector3 altura;
     float velocidad = 3f;
     public float tiempoVisible;
+    public GameManager funcion;
 
     void Awake()
     {
@@ -41,6 +43,7 @@ public class Topos : MonoBehaviour
                 if (hitInfo.collider.tag.Equals("Topo") && (hitInfo.collider.gameObject == this.gameObject))
                 {
                     TopoOculto();
+                    funcion.AddPoints(puntos);
                 }
             }
         }

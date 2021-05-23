@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public float tiempo;
     public GameObject topo;
     Topos[] topos;
-    public float salir;
+    public float salir = 60;
     public TextMeshProUGUI puntosText;
     public int puntuacion;
 
@@ -22,14 +22,18 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        tiempo += Time.deltaTime;
+        tiempo -= Time.deltaTime;
         NumAleatorio(salir);
-        if (tiempo <= 60)
+        if (tiempo >= 0)
         {
             if (salir > 97f)
             {
                 topos[Random.Range(0, topos.Length)].TopoVisible();
             }
+        }
+        else
+        {
+            tiempo = 0;
         }
 
         cronoText.text = Tiempo(tiempo);
@@ -56,9 +60,9 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void AddPoints()
+    public void AddPoints(int valor)
     {
-        puntuacion += 10;
+        puntuacion += valor;
     }
 
     public string MostrarPuntos(int puntuacion)
@@ -73,5 +77,7 @@ public class GameManager : MonoBehaviour
         salir = 0;
         tiempo = 0;
         manager.SetActive(false);
+        cronoText.text = Tiempo(tiempo);
+        puntosText.text = MostrarPuntos(puntuacion);
     }
 }
