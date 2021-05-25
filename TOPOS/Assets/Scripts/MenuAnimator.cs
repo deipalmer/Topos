@@ -6,6 +6,7 @@ public class MenuAnimator : MonoBehaviour
 {
     public GameObject menuDesaparecer;
     public GameObject menuAparecer;
+    public CanvasGroup gameOver;
     public float ubicacionDesaparecerX;
     public float ubicacionDesaparecerY;
     float duracionDesaparecer = 0.5f;
@@ -34,5 +35,10 @@ public class MenuAnimator : MonoBehaviour
     public void AparecerEscala()
     {
         LeanTween.scale(menuAparecer, escalaAparecer, duracionAparecer);
+    }
+
+    public void Desvanecer()
+    {
+        LeanTween.alphaCanvas(gameOver, 0f, 1f);
     }
 }

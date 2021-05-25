@@ -6,6 +6,7 @@ public class Topos : MonoBehaviour
 {
     public float posOculto;
     public float posVisible;
+    bool esVisible;
     public int puntos;
     Vector3 altura;
     float velocidad = 3f;
@@ -16,6 +17,7 @@ public class Topos : MonoBehaviour
     {
         TopoOculto();
         transform.localPosition = altura;
+        esVisible = false;
     }
 
     void Update()
@@ -29,9 +31,10 @@ public class Topos : MonoBehaviour
 
     public void GolpearTopo()
     {
-        if (tiempoVisible <= 0)
+        if (tiempoVisible < 0)
         {
             TopoOculto();
+            esVisible = false;
         }
 
         else if ((Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)))
@@ -40,9 +43,10 @@ public class Topos : MonoBehaviour
             RaycastHit hitInfo;
             if (Physics.Raycast(rayo, out hitInfo))
             {
-                if (hitInfo.collider.tag.Equals("Topo") && (hitInfo.collider.gameObject == this.gameObject))
+                if (hitInfo.collider.tag.Equals("Topo") && (hitInfo.collider.gameObject == this.gameObject) && (esVisible == true))
                 {
                     TopoOculto();
+                    esVisible = false;
                     funcion.AddPoints(puntos);
                 }
             }
@@ -57,6 +61,7 @@ public class Topos : MonoBehaviour
     public void TopoVisible()
     {
         altura = new Vector3(transform.localPosition.x, posVisible, transform.localPosition.z);
-        tiempoVisible = 1.5f;
+        esVisible = true;
+        tiempoVisible = 2f;
     }
 }
