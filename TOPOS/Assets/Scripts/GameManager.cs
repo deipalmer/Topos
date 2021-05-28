@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class GameManager : MonoBehaviour
     public float tiempo;
     public GameObject topo;
     public GameObject powerUp;
-    PowerUps[] powerUps;
     Topos[] topos;
     public float salir = 0;
     public TextMeshProUGUI puntosText;
@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     public CanvasGroup gameOver;
     float duracionAlfa;
     public GameObject gameOverActivo;
+    public AudioSource sonidos;
+    public AudioClip salirTopo;
+    public AudioClip finPartida;
+    public AudioClip empiezaPartida;
 
 
     private void Awake()
@@ -31,7 +35,6 @@ public class GameManager : MonoBehaviour
         manager.SetActive(false);
         gameOver.alpha = 0;
         topos = topo.GetComponentsInChildren<Topos>();
-        powerUps = powerUp.GetComponentsInChildren<PowerUps>();
     }
 
     void Update()
@@ -43,11 +46,7 @@ public class GameManager : MonoBehaviour
             if (salir > 97f)
             {
                 topos[Random.Range(0, topos.Length)].TopoVisible();
-            }
-
-            else if (salir < 1)
-            {
-                powerUps[Random.Range(0, powerUps.Length)].PowerUpVisible();
+                sonidos.PlayOneShot(salirTopo);
             }
         }
         else

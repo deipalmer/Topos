@@ -12,6 +12,8 @@ public class Topos : MonoBehaviour
     float velocidad = 3f;
     public float tiempoVisible;
     public GameManager funcion;
+    public AudioClip golpeTopo;
+    public AudioClip irseTopo;
 
     void Awake()
     {
@@ -48,6 +50,7 @@ public class Topos : MonoBehaviour
                     TopoOculto();
                     esVisible = false;
                     funcion.AddPoints(puntos);
+                    funcion.sonidos.PlayOneShot(golpeTopo);
                 }
             }
         }
