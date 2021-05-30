@@ -9,7 +9,7 @@ public class Topos : MonoBehaviour
     bool esVisible;
     public int puntos;
     Vector3 altura;
-    float velocidad = 3f;
+    float velocidad = 2f;
     public float tiempoVisible;
     public GameManager funcion;
     public AudioClip golpeTopo;
