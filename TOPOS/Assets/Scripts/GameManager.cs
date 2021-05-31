@@ -7,11 +7,11 @@ using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    public bool tiempoPausado;
     public GameObject manager;
     public TextMeshProUGUI cronoText;
     public float tiempo;
     public GameObject topo;
-    public GameObject powerUp;
     Topos[] topos;
     public float salir = 0;
     public TextMeshProUGUI puntosText;
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         gameOverActivo.SetActive(false);
+        tiempoPausado = false;
     }
 
     void Start()
@@ -54,7 +55,6 @@ public class GameManager : MonoBehaviour
             GameOver();
             tiempo = 0;
         }
-
         cronoText.text = Tiempo(tiempo);
         puntosText.text = MostrarPuntos(puntuacion);
     }
@@ -102,7 +102,11 @@ public class GameManager : MonoBehaviour
         puntuacion = 0;
         salir = 0;
         tiempo = 60;
-        duracionAlfa = 0;
+        duracionAlfa -= Time.deltaTime;
+        if (duracionAlfa <= 0)
+        {
+            duracionAlfa = 0;
+        }
     }
 
     public void GameOver()
@@ -120,5 +124,10 @@ public class GameManager : MonoBehaviour
     public void Cerrar()
     {
         Application.Quit();
+    }
+
+    public void Pausar()
+    {
+        tiempoPausado = !tiempoPausado;
     }
 }

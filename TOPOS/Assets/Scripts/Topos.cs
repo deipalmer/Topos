@@ -67,4 +67,12 @@ public class Topos : MonoBehaviour
         esVisible = true;
         tiempoVisible = 2f;
     }
+
+    void PausarJuego()
+    {
+        if (funcion.tiempoPausado == true)
+        {
+            tiempoVisible += tiempoVisible;
+        }
+    }
 }
