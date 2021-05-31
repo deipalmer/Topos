@@ -40,5 +40,6 @@ public class MenuAnimator : MonoBehaviour
     public void Desvanecer()
     {
         LeanTween.alphaCanvas(gameOver, 0f, 1f);
+        menuDesaparecer.SetActive(false);
     }
 }

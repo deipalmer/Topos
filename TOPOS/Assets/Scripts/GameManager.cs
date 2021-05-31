@@ -3,23 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    float volumenM;
+    float volumenSFX;
+    public float pausa;
+    public float tiempoBonus;
+    bool doblePuntuacion = false;
     public bool tiempoPausado;
     public GameObject manager;
     public TextMeshProUGUI cronoText;
     public float tiempo;
     public GameObject topo;
+    public Topos funcionesTopo;
     Topos[] topos;
-    public float salir = 0;
+    public int salir = 0;
     public TextMeshProUGUI puntosText;
+    public TextMeshProUGUI puntosTextGameOver;
     public int puntuacion;
     public CanvasGroup gameOver;
     float duracionAlfa;
     public GameObject gameOverActivo;
     public AudioSource sonidos;
+    public AudioSource musica;
     public AudioClip salirTopo;
     public AudioClip finPartida;
     public AudioClip empiezaPartida;
@@ -40,11 +47,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (doblePuntuacion == true)
+        {
+            tiempoBonus += Time.deltaTime;
+        }
+
+        if (tiempoBonus >= 5f)
+        {
+            doblePuntuacion = false;
+            tiempoBonus = 0f;
+        }
+
         tiempo -= Time.deltaTime;
-        NumAleatorio(salir);
+        salir = Random.Range(0, 100);
+        
         if (tiempo >= 0)
         {
-            if (salir > 97f)
+            if (salir > 96f)
             {
                 topos[Random.Range(0, topos.Length)].TopoVisible();
                 sonidos.PlayOneShot(salirTopo);
@@ -57,13 +76,10 @@ public class GameManager : MonoBehaviour
         }
         cronoText.text = Tiempo(tiempo);
         puntosText.text = MostrarPuntos(puntuacion);
-    }
+        puntosTextGameOver.text = MostrarPuntos(puntuacion);
 
-    float NumAleatorio(float num)
-    {
-        salir = Random.Range(0, 100);
-
-        return salir;
+        musica.volume = volumenM;
+        sonidos.volume = volumenSFX;
     }
 
     string Tiempo(float total)
@@ -72,11 +88,6 @@ public class GameManager : MonoBehaviour
         int segundos = (int)tiempo % 60;
 
         return minutos.ToString("00") + (" : ") + segundos.ToString("00");
-    }
-
-    public void AddPoints(int valor)
-    {
-        puntuacion += valor;
     }
 
     public string MostrarPuntos(int puntuacion)
@@ -126,8 +137,47 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void Pausar()
+    public void QuitarPuntos(int valor)
     {
-        tiempoPausado = !tiempoPausado;
+        puntuacion -= valor;
+
+        if (puntuacion < 0)
+        {
+            puntuacion = 0;
+        }
+    }
+
+    public void SumarTiempo(int valor)
+    {
+        tiempo += valor;
+    }
+
+    public void DoblarPuntuacion()
+    {
+        tiempoBonus = 0f;
+        doblePuntuacion = true;
+    }
+
+    public void AddPoints(int valor)
+    {
+        if (doblePuntuacion == false)
+        {
+            puntuacion += valor;
+        }
+
+        if (doblePuntuacion == true)
+        {
+            puntuacion += valor * 2;
+        }
+    }
+
+    public void VolumenMusica(float vol)
+    {
+        volumenM = vol;
+    }
+
+    public void VolumenSFX(float vol)
+    {
+        volumenSFX = vol;
     }
 }

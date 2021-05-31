@@ -6,12 +6,13 @@ public class Topos : MonoBehaviour
 {
     public float posOculto;
     public float posVisible;
-    bool esVisible;
+    public bool esVisible;
     public int puntos;
     Vector3 altura;
     float velocidad = 2f;
     public float tiempoVisible;
     public GameManager funcion;
+    public AudioSource toposSonidos;
     public AudioClip golpeTopo;
     public AudioClip irseTopo;
 
@@ -50,7 +51,28 @@ public class Topos : MonoBehaviour
                     TopoOculto();
                     esVisible = false;
                     funcion.AddPoints(puntos);
-                    funcion.sonidos.PlayOneShot(golpeTopo);
+                    toposSonidos.PlayOneShot(golpeTopo);
+                }
+
+                if (hitInfo.collider.tag.Equals("PowerUpTime") && (hitInfo.collider.gameObject == this.gameObject) && (esVisible == true))
+                {
+                    funcion.SumarTiempo(10);
+                    TopoOculto();
+                    esVisible = false;
+                }
+
+                if (hitInfo.collider.tag.Equals("PowerUpPoints") && (hitInfo.collider.gameObject == this.gameObject) && (esVisible == true))
+                {
+                    funcion.DoblarPuntuacion();
+                    TopoOculto();
+                    esVisible = false;
+                }
+
+                if (hitInfo.collider.tag.Equals("PowerUpBomb") && (hitInfo.collider.gameObject == this.gameObject) && (esVisible == true))
+                {
+                    funcion.QuitarPuntos(50);
+                    TopoOculto();
+                    esVisible = false;
                 }
             }
         }
@@ -66,13 +88,5 @@ public class Topos : MonoBehaviour
         altura = new Vector3(transform.localPosition.x, posVisible, transform.localPosition.z);
         esVisible = true;
         tiempoVisible = 2f;
-    }
-
-    void PausarJuego()
-    {
-        if (funcion.tiempoPausado == true)
-        {
-            tiempoVisible += tiempoVisible;
-        }
     }
 }
