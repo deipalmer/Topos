@@ -47,6 +47,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -58,40 +60,42 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11264}
+      Script: {instanceID: 11428}
     - Class: 114
-      Script: {instanceID: 11430}
+      Script: {instanceID: 11594}
     - Class: 114
-      Script: {instanceID: 11474}
+      Script: {instanceID: 11636}
     - Class: 114
-      Script: {instanceID: 11872}
+      Script: {instanceID: 12034}
     - Class: 114
-      Script: {instanceID: 11902}
+      Script: {instanceID: 12064}
     - Class: 114
-      Script: {instanceID: 12044}
+      Script: {instanceID: 12206}
     - Class: 114
-      Script: {instanceID: 12274}
+      Script: {instanceID: 12436}
     - Class: 114
-      Script: {instanceID: 12498}
+      Script: {instanceID: 12660}
     - Class: 114
-      Script: {instanceID: 12512}
+      Script: {instanceID: 12674}
     - Class: 114
-      Script: {instanceID: 12518}
+      Script: {instanceID: 12680}
     - Class: 114
-      Script: {instanceID: 12702}
+      Script: {instanceID: 12864}
     - Class: 114
-      Script: {instanceID: 12764}
+      Script: {instanceID: 12926}
     - Class: 114
-      Script: {instanceID: 12910}
+      Script: {instanceID: 13072}
     - Class: 114
-      Script: {instanceID: 13120}
+      Script: {instanceID: 13282}
     - Class: 114
-      Script: {instanceID: 13154}
+      Script: {instanceID: 13316}
     - Class: 114
-      Script: {instanceID: 13168}
+      Script: {instanceID: 13330}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -508,7 +512,7 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 839c88808f2e9d86b645a30f38c178c4
+      Hash: b2697e0e27f4cb6ed92191e4b31e7ad0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Topos
@@ -682,7 +686,7 @@ ScriptsOnlyBuild:
     className: OldGUIExamplesCS
   - hash:
       serializedVersion: 2
-      Hash: fd18614728b351958850e775315efab7
+      Hash: 47e573a7a63c5a1134ac05090f1234b2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -701,4 +705,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/SMASH!.apk
+  playerPath: C:/Users/Alumnado/Desktop/Topos/SMASH!.apk

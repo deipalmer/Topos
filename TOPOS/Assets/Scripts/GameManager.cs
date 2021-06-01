@@ -125,6 +125,7 @@ public class GameManager : MonoBehaviour
         gameOverActivo.SetActive(true);
         duracionAlfa += Time.deltaTime;
         gameOver.alpha = duracionAlfa;
+        musica.PlayOneShot(finPartida);
         if (gameOver.alpha >= 1)
         {
             gameOver.alpha = 1;
