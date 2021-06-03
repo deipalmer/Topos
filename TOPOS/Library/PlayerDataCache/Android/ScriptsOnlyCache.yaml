@@ -705,4 +705,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Alumnado/Desktop/Topos/SMASH!.apk
+  playerPath: D:/SOFTWARE/SMASH!.apk
